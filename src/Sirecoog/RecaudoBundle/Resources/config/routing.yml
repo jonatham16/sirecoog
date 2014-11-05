@@ -1,0 +1,3 @@
+sirecoog_recaudo_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SirecoogRecaudoBundle:Default:index }

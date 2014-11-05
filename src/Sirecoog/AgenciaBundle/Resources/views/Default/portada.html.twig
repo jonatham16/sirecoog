@@ -1,0 +1,25 @@
+{% extends "::frontend.html.twig" %}
+
+{% block title %}Bienvenido usted esta en la portada
+{% endblock %}
+{% block id 'portada' %}
+
+
+        {% block contenido %}
+            <section id="content">
+                
+                <div class="inside">
+                    <h2><span>Bienvenido</span> al Sirecoog 2.0!</h2>
+                    <p><b>Hola {{ usuario.nombre | truncate(8,true) }}! truncado</b> 
+                    <p><b>Hola {{ usuario.nombre }}!</b> 
+                        Acabas de ingresar al Sistema de información para la administración de Recaudo. Se han habilitado una serie de opciones que podrá localizar en la parte superior de esta area y sobre las cuales se le ha permitido ejecutar acciones que pueden ser de consulta o modificación de la información almacenada.
+                        <br>
+                        <br>         
+          Se recomienda que haga un uso adecuado de este recurso y preste total atención a los diferentes mensajes que el Sistema muestra durante su utilización, ya que esto evitará errores en las tareas que este ejecutando.
+          It has several pages: <a href="index.html">Home</a>, <a href="about-us.html">About</a>, <a href="articles.html">Articles</a> (with Article page), <a href="contact-us.html">Contacts</a> (note that contact us form – doesn’t work), <a href="sitemap.html">Site Map.</a></p>
+                </div>
+
+            </section>
+        {% endblock %}
+
+

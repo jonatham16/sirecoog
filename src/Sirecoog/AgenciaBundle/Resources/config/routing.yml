@@ -1,0 +1,7 @@
+sirecoog_agencia_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SirecoogAgenciaBundle:Default:index }
+    
+portada:
+    path: /{login}
+    defaults: { _controller: SirecoogAgenciaBundle:Default:portada }

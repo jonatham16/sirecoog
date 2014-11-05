@@ -1,0 +1,4 @@
+services:
+#    sirecoog_agencia.example:
+#        class: Sirecoog\AgenciaBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

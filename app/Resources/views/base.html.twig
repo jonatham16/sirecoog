@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Bienvenido al SIRECOOG {% endblock %}</title>
+        <meta name="description" content="{% block metades %} Meta descripcion comun {% endblock %}">
+        <meta name="keywords" content="{% block metacont %}Meta Content{% endblock %}">
+        <meta name="author" content="Jonathan Molina Vargas, @jmolinavar">
+        <meta charset="utf-8">
+
+        {% block stylesheet %} 
+        {% endblock %}
+
+    </head>
+    <body id="{% block id '' %}" >
+        <div class="tail-bottom">
+            <div id="main">
+                <!-- header -->
+                <header>
+                    <h1><a href="index.html">BizSolutions</a></h1>   
+                </header>
+                <div class="wrapper indent">
+                    <!-- content -->
+                    {% block body %}
+                    {% endblock %}
+                </div>
+                <!-- footer -->
+                <footer>
+                    <div class="inside">
+                        {{ 'now' | date('d-m-Y') }} Creditos a quien se lo merece: <br>
+                        Website template designed by <a class="new_window" href="http://store.templatemonster.com?aff=netsib1" target="_blank" rel="nofollow">www.templatemonster.com</a><br/>3D Models provided by <a class="new_window" href="http://www.templates.com/product/3d-models/" target="_blank" rel="nofollow">www.templates.com</a>
+                    </div>
+                </footer>
+                {% block javascritps %}
+                {% endblock %}
+            </div>
+        </div>    
+    </body>
+</html>
+
