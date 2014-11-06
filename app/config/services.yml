@@ -7,3 +7,7 @@ services:
         class: Twig_Extensions_Extension_Date
         tags:
             - { name: twig.extension }
+    twig.extension.agencia:
+        class: Sirecoog\AgenciaBundle\Twig\Extension\SirecoogExtension
+        tags:
+            - { name: twig.extension }

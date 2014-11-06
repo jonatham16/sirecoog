@@ -1,7 +1,7 @@
 <h2><span>Tu</span> Resumen</h2>
 <ul class="insurance">
     <li><strong>Usuario</strong>{{ resumen.usuario.nombre }}</li>
-    <li><strong>Valor tope</strong>$ {{ resumen.valor }}</li>
+    <li><strong>Valor tope</strong>$ {{ val_comas(resumen.valor) }}</li>
     <li><strong>Fecha</strong>{{ resumen.fecha | date('d-m-y') }}</li>
     <li><strong>Hora</strong>{{ resumen.hora | date('h:m:s') }}</li>
     <li><strong>Tiempo transcurrido desde la asignacion</strong>{{ resumen.fecha | time_diff }}</li>

@@ -235,6 +235,7 @@ class appDevDebugProjectContainer extends Container
             'twig' => 'getTwigService',
             'twig.controller.exception' => 'getTwig_Controller_ExceptionService',
             'twig.exception_listener' => 'getTwig_ExceptionListenerService',
+            'twig.extension.agencia' => 'getTwig_Extension_AgenciaService',
             'twig.extension.date' => 'getTwig_Extension_DateService',
             'twig.extension.text' => 'getTwig_Extension_TextService',
             'twig.loader' => 'getTwig_LoaderService',
@@ -2982,6 +2983,7 @@ class appDevDebugProjectContainer extends Container
 
         $instance->addExtension($this->get('twig.extension.text'));
         $instance->addExtension($this->get('twig.extension.date'));
+        $instance->addExtension($this->get('twig.extension.agencia'));
         $instance->addExtension(new \Symfony\Bundle\SecurityBundle\Twig\Extension\LogoutUrlExtension($this->get('templating.helper.logout_url')));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\SecurityExtension($this->get('security.context', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension($this->get('translator')));
@@ -3028,6 +3030,19 @@ class appDevDebugProjectContainer extends Container
     protected function getTwig_ExceptionListenerService()
     {
         return $this->services['twig.exception_listener'] = new \Symfony\Component\HttpKernel\EventListener\ExceptionListener('twig.controller.exception:showAction', $this->get('monolog.logger.request', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+
+    /**
+     * Gets the 'twig.extension.agencia' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Sirecoog\AgenciaBundle\Twig\Extension\SirecoogExtension A Sirecoog\AgenciaBundle\Twig\Extension\SirecoogExtension instance.
+     */
+    protected function getTwig_Extension_AgenciaService()
+    {
+        return $this->services['twig.extension.agencia'] = new \Sirecoog\AgenciaBundle\Twig\Extension\SirecoogExtension();
     }
 
     /**

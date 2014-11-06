@@ -24,7 +24,7 @@ class __TwigTemplate_5d91b974dd7dd7834ff30ab428c54e6975545a716ae3e11297e193fa298
         echo "</li>
     <li><strong>Valor tope</strong>\$ ";
         // line 4
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["resumen"]) ? $context["resumen"] : $this->getContext($context, "resumen")), "valor", array()), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('agencia')->val_comas($this->getAttribute((isset($context["resumen"]) ? $context["resumen"] : $this->getContext($context, "resumen")), "valor", array())), "html", null, true);
         echo "</li>
     <li><strong>Fecha</strong>";
         // line 5
