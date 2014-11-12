@@ -1,12 +1,12 @@
 sirecoog_agencia:
     resource: "@SirecoogAgenciaBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /sirecoog/
 
 sirecoog_recaudo:
     resource: "@SirecoogRecaudoBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /sirecoog/
 
 sirecoog_usuario:
     resource: "@SirecoogUsuarioBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /sirecoog/
 

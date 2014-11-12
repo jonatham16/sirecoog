@@ -76,4 +76,6 @@ swiftmailer:
     spool:     { type: memory }
     
 parameters:
-    Sirecoog.login_iniciado: 'jmolina'   
+    Sirecoog.login_iniciado: 'jmolina' 
+    Sirecoog.regla_acceso_idioma: 'en|es'
+    Sirecoog.regla_acceso_texto: '^[a-zA-Z]*$'

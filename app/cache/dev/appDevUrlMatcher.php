@@ -122,25 +122,28 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // sirecoog_agencia_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'sirecoog_agencia_homepage')), array (  '_controller' => 'Sirecoog\\AgenciaBundle\\Controller\\DefaultController::indexAction',));
-        }
-
-        // portada
-        if (preg_match('#^/(?P<login>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'portada')), array (  '_controller' => 'Sirecoog\\AgenciaBundle\\Controller\\DefaultController::portadaAction',));
-        }
-
-        if (0 === strpos($pathinfo, '/hello')) {
-            // sirecoog_recaudo_homepage
-            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'sirecoog_recaudo_homepage')), array (  '_controller' => 'Sirecoog\\RecaudoBundle\\Controller\\DefaultController::indexAction',));
+        if (0 === strpos($pathinfo, '/sirecoog')) {
+            // sirecoog_agencia_homepage
+            if (0 === strpos($pathinfo, '/sirecoog/hello') && preg_match('#^/sirecoog/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'sirecoog_agencia_homepage')), array (  '_controller' => 'Sirecoog\\AgenciaBundle\\Controller\\DefaultController::indexAction',));
             }
 
-            // sirecoog_usuario_homepage
-            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'sirecoog_usuario_homepage')), array (  '_controller' => 'Sirecoog\\UsuarioBundle\\Controller\\DefaultController::indexAction',));
+            // portada
+            if (preg_match('#^/sirecoog/(?P<_locale>en|es)/(?P<login>[a-zA-Z]*)$#s', $pathinfo, $matches) && (in_array($request->getClientIp(), array(0 => "::1", 1 => "127.0.0.1", 2 => "fe80::1")) && preg_match("/firefox/i", $request->headers->get("User-Agent")))) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'portada')), array (  '_controller' => 'Sirecoog\\AgenciaBundle\\Controller\\DefaultController::portadaAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/sirecoog/hello')) {
+                // sirecoog_recaudo_homepage
+                if (preg_match('#^/sirecoog/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'sirecoog_recaudo_homepage')), array (  '_controller' => 'Sirecoog\\RecaudoBundle\\Controller\\DefaultController::indexAction',));
+                }
+
+                // sirecoog_usuario_homepage
+                if (preg_match('#^/sirecoog/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'sirecoog_usuario_homepage')), array (  '_controller' => 'Sirecoog\\UsuarioBundle\\Controller\\DefaultController::indexAction',));
+                }
+
             }
 
         }

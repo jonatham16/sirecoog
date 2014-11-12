@@ -3585,6 +3585,8 @@ class appDevDebugProjectContainer extends Container
             'debug_redirects' => false,
             'use_assetic_controller' => true,
             'sirecoog.login_iniciado' => 'jmolina',
+            'sirecoog.regla_acceso_idioma' => 'en|es',
+            'sirecoog.regla_acceso_texto' => '^[a-zA-Z]*$',
             'controller_resolver.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver',
             'controller_name_converter.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerNameParser',
             'response_listener.class' => 'Symfony\\Component\\HttpKernel\\EventListener\\ResponseListener',
