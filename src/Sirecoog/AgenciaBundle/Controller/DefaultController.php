@@ -28,4 +28,8 @@ class DefaultController extends Controller
         }
         return $this->render('SirecoogAgenciaBundle:Default:resumen.html.twig', array('resumen' => $resumen));
     }
+    
+    public function aboutAction() {
+        return $this->render('SirecoogAgenciaBundle:Default:about.html.twig');
+    }
 }

@@ -133,6 +133,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'portada')), array (  '_controller' => 'Sirecoog\\AgenciaBundle\\Controller\\DefaultController::portadaAction',));
             }
 
+            // about
+            if ($pathinfo === '/sirecoog/about') {
+                return array (  '_controller' => 'Sirecoog\\AgenciaBundle\\Controller\\DefaultController::aboutAction',  '_route' => 'about',);
+            }
+
             if (0 === strpos($pathinfo, '/sirecoog/hello')) {
                 // sirecoog_recaudo_homepage
                 if (preg_match('#^/sirecoog/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
