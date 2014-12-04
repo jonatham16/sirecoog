@@ -1,0 +1,22 @@
+security:
+    firewalls:
+        area_segura:
+            pattern: ^/
+            anonymous: ~
+            form_login:
+                login_path: usuario_login
+                check_path: usuario_login_check
+                provider:   usuarios_bd
+                
+    access_control:
+        - { path: ^/sirecoog/about, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/sirecoog/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/sirecoog/*, roles: ROLE_ADMIN }
+    
+    providers:
+        usuarios_bd:
+            entity: { class: SirecoogUsuarioBundle:Usuario, property: login }
+                
+    
+    encoders:
+        Sirecoog\SirecoogUsuarioBundle\Entity\Usuario: plaintext

@@ -1,3 +1,13 @@
 sirecoog_usuario_homepage:
     path:     /hello/{name}
     defaults: { _controller: SirecoogUsuarioBundle:Default:index }
+
+usuario_login:
+    path: /login
+    defaults: { _controller: SirecoogUsuarioBundle:Default:login }
+    
+usuario_login_check:
+    path: /login_check
+    
+usuario_logout:
+    path: /logout

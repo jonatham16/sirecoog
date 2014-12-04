@@ -3,18 +3,24 @@ security:
         area_segura:
             pattern: ^/
             anonymous: ~
-            http_basic:
-                realm: 'Area segura prueba'
+            form_login:
+                provider:   usuarios_bd
+                login_path: usuario_login
+                check_path: usuario_login_check               
+                
     access_control:
         - { path: ^/sirecoog/about, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/sirecoog/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/sirecoog/*, roles: ROLE_ADMIN }
-    
-    providers:
-        in_memory:
-            memory:
-                users:
-                    ryan: { password: ryanp, roles: 'ROLE_USER' }
-                    admin: { password: adminp, roles: 'ROLE_ADMIN' }
-    
+        
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        Sirecoog\UsuarioBundle\Entity\Usuario:
+            algorithm: plaintext
+        
+    providers:
+        usuarios_bd:
+            entity:
+                class: SirecoogUsuarioBundle:Usuario 
+                property: login 
+                
+    

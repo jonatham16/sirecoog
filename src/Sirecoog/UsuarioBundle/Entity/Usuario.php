@@ -3,14 +3,15 @@
 namespace Sirecoog\UsuarioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+//use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 /**
  * Usuario
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Sirecoog\UsuarioBundle\Entity\UsuarioRepository")
  */
-class Usuario
+class Usuario implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var integer
@@ -151,4 +152,63 @@ class Usuario
     {
         return $this->cedula;
     }
+ /**
+     * @inheritDoc
+     */
+    public function eraseCredentials() {
+        
+    }
+ /**
+     * @inheritDoc
+     */
+    public function getPassword() {
+        return $this->getClave();
+    }
+ /**
+     * @inheritDoc
+     */
+    public function getRoles() {
+        return array('ROLE_ADMIN');
+    }
+ /**
+     * @inheritDoc
+     */
+    public function getSalt() {
+        
+    }
+ /**
+     * @inheritDoc
+     */
+    public function getUsername() {
+        return $this->getLogin();
+    }
+   /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize() {
+        
+    }
+ /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized) {
+        return true;
+    }
+
+    public function isAccountNonExpired() {
+        return true;
+    }
+
+    public function isAccountNonLocked() {
+        return true;      
+    }
+
+    public function isCredentialsNonExpired() {
+        return true;       
+    }
+
+    public function isEnabled() {
+        return true;        
+    }
+
 }

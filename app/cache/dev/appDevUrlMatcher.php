@@ -151,6 +151,27 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
+            if (0 === strpos($pathinfo, '/sirecoog/log')) {
+                if (0 === strpos($pathinfo, '/sirecoog/login')) {
+                    // usuario_login
+                    if ($pathinfo === '/sirecoog/login') {
+                        return array (  '_controller' => 'Sirecoog\\UsuarioBundle\\Controller\\DefaultController::loginAction',  '_route' => 'usuario_login',);
+                    }
+
+                    // usuario_login_check
+                    if ($pathinfo === '/sirecoog/login_check') {
+                        return array('_route' => 'usuario_login_check');
+                    }
+
+                }
+
+                // usuario_logout
+                if ($pathinfo === '/sirecoog/logout') {
+                    return array('_route' => 'usuario_logout');
+                }
+
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
