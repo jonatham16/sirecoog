@@ -1,0 +1,40 @@
+security:
+    firewalls:
+        area_segura:
+            pattern: ^/
+            anonymous: ~
+            form_login:
+#                provider:   usuarios_bd
+                login_path: usuario_login
+                check_path: usuario_login_check               
+                
+    access_control:
+        - { path: ^/sirecoog/about, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/sirecoog/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/sirecoog/*, roles: ROLE_ADMIN }
+        
+    encoders:
+        Sirecoog\UsuarioBundle\Entity\Usuario:
+            algorithm: plaintext
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 4
+        
+    providers:
+#para que puedan funcionar 2 o mas proveedores configurados        
+        proveedor_encadenado:
+            chain:
+                providers: [en_memoria, usuarios_bd]
+        en_memoria:
+            memory:
+                users:
+#clave es 1234 probando bcrypt con costo 4                    
+                    ryan:  { password: $2a$04$b1AOTosbehHNR3M6cleCJ.2BKWmQdSyuhliNr4TzjPz8UHo8RNlta, roles: 'ROLE_USER' }
+                    admin: { password: $2a$04$b1AOTosbehHNR3M6cleCJ.2BKWmQdSyuhliNr4TzjPz8UHo8RNlta, roles: 'ROLE_ADMIN' }
+        usuarios_bd:
+            entity:
+                class: SirecoogUsuarioBundle:Usuario 
+                property: login
+
+                
+    

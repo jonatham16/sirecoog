@@ -4,15 +4,16 @@ namespace Sirecoog\UsuarioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 //use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * Usuario
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Sirecoog\UsuarioBundle\Entity\UsuarioRepository")
  */
-class Usuario implements AdvancedUserInterface, \Serializable
-{
+class Usuario implements UserInterface{
+
     /**
      * @var integer
      *
@@ -50,14 +51,12 @@ class Usuario implements AdvancedUserInterface, \Serializable
      */
     private $cedula;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -67,8 +66,7 @@ class Usuario implements AdvancedUserInterface, \Serializable
      * @param string $nombre
      * @return Usuario
      */
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
 
         return $this;
@@ -79,8 +77,7 @@ class Usuario implements AdvancedUserInterface, \Serializable
      *
      * @return string 
      */
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
 
@@ -90,8 +87,7 @@ class Usuario implements AdvancedUserInterface, \Serializable
      * @param string $login
      * @return Usuario
      */
-    public function setLogin($login)
-    {
+    public function setLogin($login) {
         $this->login = $login;
 
         return $this;
@@ -102,8 +98,7 @@ class Usuario implements AdvancedUserInterface, \Serializable
      *
      * @return string 
      */
-    public function getLogin()
-    {
+    public function getLogin() {
         return $this->login;
     }
 
@@ -113,8 +108,7 @@ class Usuario implements AdvancedUserInterface, \Serializable
      * @param string $clave
      * @return Usuario
      */
-    public function setClave($clave)
-    {
+    public function setClave($clave) {
         $this->clave = $clave;
 
         return $this;
@@ -125,8 +119,7 @@ class Usuario implements AdvancedUserInterface, \Serializable
      *
      * @return string 
      */
-    public function getClave()
-    {
+    public function getClave() {
         return $this->clave;
     }
 
@@ -136,8 +129,7 @@ class Usuario implements AdvancedUserInterface, \Serializable
      * @param string $cedula
      * @return Usuario
      */
-    public function setCedula($cedula)
-    {
+    public function setCedula($cedula) {
         $this->cedula = $cedula;
 
         return $this;
@@ -148,67 +140,49 @@ class Usuario implements AdvancedUserInterface, \Serializable
      *
      * @return string 
      */
-    public function getCedula()
-    {
+    public function getCedula() {
         return $this->cedula;
     }
- /**
+
+    /**
      * @inheritDoc
      */
     public function eraseCredentials() {
         
     }
- /**
+
+    /**
      * @inheritDoc
      */
     public function getPassword() {
-        return $this->getClave();
+        return $this->clave;
     }
- /**
+
+    /**
      * @inheritDoc
      */
     public function getRoles() {
         return array('ROLE_ADMIN');
     }
- /**
+
+    /**
      * @inheritDoc
      */
     public function getSalt() {
         
     }
- /**
+
+    /**
      * @inheritDoc
      */
     public function getUsername() {
+        return $this->login;
+    }
+
+    public function __toString() {
         return $this->getLogin();
     }
-   /**
-     * @see \Serializable::serialize()
-     */
-    public function serialize() {
-        
-    }
- /**
-     * @see \Serializable::unserialize()
-     */
-    public function unserialize($serialized) {
-        return true;
-    }
 
-    public function isAccountNonExpired() {
-        return true;
-    }
 
-    public function isAccountNonLocked() {
-        return true;      
-    }
-
-    public function isCredentialsNonExpired() {
-        return true;       
-    }
-
-    public function isEnabled() {
-        return true;        
-    }
 
 }

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>LOGIN!</title>
+    </head>
+    <body>
+
+        Hello 2!
+        {% if app.user and is_granted('ROLE_ADMIN') %}
+            <p>Username: {{ app.user.nombre }}</p>
+        {% endif %}
+    </body>
+</html>

@@ -4,9 +4,19 @@ security:
             pattern: ^/
             anonymous: ~
             form_login:
-                provider:   usuarios_bd
+#                provider:   usuarios_bd
                 login_path: usuario_login
-                check_path: usuario_login_check               
+                check_path: usuario_login_check
+                csrf_provider: form.csrf_provider
+                default_target_path: hello2
+                always_use_default_target_path: true
+            logout:
+                path:   usuario_logout
+                target: usuario_login
+            remember_me:
+                key: "%secret%"
+                lifetime: 3600
+                path: /
                 
     access_control:
         - { path: ^/sirecoog/about, roles: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -16,11 +26,23 @@ security:
     encoders:
         Sirecoog\UsuarioBundle\Entity\Usuario:
             algorithm: plaintext
+        Symfony\Component\Security\Core\User\User:
+            algorithm: plaintext
         
     providers:
+#para que puedan funcionar 2 o mas proveedores configurados        
+        proveedor_encadenado:
+            chain:
+                providers: [en_memoria, usuarios_bd]
+        en_memoria:
+            memory:
+                users:
+                    ryan:  { password: 1234, roles: 'ROLE_USER' }
+                    admin: { password: 1234, roles: 'ROLE_ADMIN' }
         usuarios_bd:
             entity:
                 class: SirecoogUsuarioBundle:Usuario 
-                property: login 
+                property: login
+
                 
     

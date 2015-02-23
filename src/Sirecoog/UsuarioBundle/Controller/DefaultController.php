@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 class DefaultController extends Controller {
 
-    public function indexAction($name) {
-        return $this->render('SirecoogUsuarioBundle:Default:index.html.twig', array('name' => $name));
+    public function indexAction() {
+        return $this->render('SirecoogUsuarioBundle:Default:index.html.twig');
     }
 
     public function loginAction() {

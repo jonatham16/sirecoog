@@ -47,12 +47,13 @@ class __TwigTemplate_a430a5664402673a5b352397db2111dd5e3500ae4d5056774f8f560647f
                 
                 <div class=\"inside\">
                     <h2><span>Bienvenido</span> al Sirecoog 2.0!</h2>
+                     
                     <p><b>Hola ";
-        // line 13
+        // line 14
         echo twig_escape_filter($this->env, twig_truncate_filter($this->env, $this->getAttribute((isset($context["usuario"]) ? $context["usuario"] : $this->getContext($context, "usuario")), "nombre", array()), 8, true), "html", null, true);
         echo "! truncado</b> 
                     <p><b>Hola ";
-        // line 14
+        // line 15
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["usuario"]) ? $context["usuario"] : $this->getContext($context, "usuario")), "nombre", array()), "html", null, true);
         echo "!</b> 
                         Acabas de ingresar al Sistema de información para la administración de Recaudo. Se han habilitado una serie de opciones que podrá localizar en la parte superior de esta area y sobre las cuales se le ha permitido ejecutar acciones que pueden ser de consulta o modificación de la información almacenada.
@@ -78,6 +79,6 @@ class __TwigTemplate_a430a5664402673a5b352397db2111dd5e3500ae4d5056774f8f560647f
 
     public function getDebugInfo()
     {
-        return array (  56 => 14,  52 => 13,  46 => 9,  43 => 8,  37 => 5,  30 => 3,);
+        return array (  57 => 15,  53 => 14,  46 => 9,  43 => 8,  37 => 5,  30 => 3,);
     }
 }
